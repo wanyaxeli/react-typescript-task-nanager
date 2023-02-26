@@ -1,24 +1,18 @@
-import React from 'react';
+import React, { useEffect,useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import HeaderDiv from './components/Header';
+import Tasks from './components/Tasks';
+export interface state {
+  id:number;
+  task:string
+}
 function App() {
+  const[task,setTask]=useState<state[]>([])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <HeaderDiv setTask={setTask} />
+       <Tasks task={task} setTask={setTask}/>
     </div>
   );
 }
